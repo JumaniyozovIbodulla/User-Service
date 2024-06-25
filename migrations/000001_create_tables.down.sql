@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS "join_events";
 DROP TABLE IF EXISTS "events";
 DROP TABLE IF EXISTS "students";
 DROP TABLE IF EXISTS "teachers";

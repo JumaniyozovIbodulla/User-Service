@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS "branches" (
   "name" VARCHAR(255) NOT NULL,
   "location" GEOMETRY(POINT, 4326) NOT NULL,
   "super_admin_id" UUID REFERENCES "super_admins" ("id"),
+  "is_active" BIGINT DEFAULT 0,
   "created_at" TIMESTAMPTZ NOT NULL DEFAULT 'NOW()'
 );
 
@@ -44,6 +45,7 @@ CREATE TABLE IF NOT EXISTS "groups" (
   "months" INT DEFAULT 3,
   "number_of_students" INT DEFAULT 0,
   "branch_id" UUID UNIQUE REFERENCES "branches" ("id"),
+  "is_active" BIGINT DEFAULT 0,
   "created_at" TIMESTAMPTZ NOT NULL DEFAULT 'NOW()'
 );
 
@@ -56,6 +58,7 @@ CREATE TABLE IF NOT EXISTS "managers" (
   "salary" NUMERIC(10,2) NOT NULL,
   "super_admin_id" UUID UNIQUE REFERENCES "super_admins" ("id"),
   "branch_id" UUID UNIQUE REFERENCES "branches" ("id"),
+  "is_active" BIGINT DEFAULT 0,
   "created_at" TIMESTAMPTZ NOT NULL DEFAULT 'NOW()'
 );
 
@@ -69,6 +72,7 @@ CREATE TABLE IF NOT EXISTS "administrators" (
   "months_worked" INT DEFAULT 0,
   "ielts_score" NUMERIC(2,1) NOT NULL,
   "branch_id" UUID UNIQUE REFERENCES "branches" ("id"),
+  "is_active" BIGINT DEFAULT 0,
   "created_at" TIMESTAMPTZ NOT NULL DEFAULT 'NOW()'
 );
 
@@ -84,6 +88,7 @@ CREATE TABLE IF NOT EXISTS "support_teachers" (
   "months_worked" BIGINT DEFAULT 0,
   "branch_id" UUID UNIQUE REFERENCES "branches" ("id"),
   "group_id" UUID UNIQUE REFERENCES "groups" ("id"),
+  "is_active" BIGINT DEFAULT 0,
   "created_at" TIMESTAMPTZ NOT NULL DEFAULT 'NOW()'
 );
 
@@ -100,6 +105,7 @@ CREATE TABLE IF NOT EXISTS "teachers" (
   "support_teacher_id" UUID REFERENCES "support_teachers" ("id"),
   "branch_id" UUID UNIQUE REFERENCES "branches" ("id"),
   "group_id" UUID UNIQUE REFERENCES "groups" ("id"),
+  "is_active" BIGINT DEFAULT 0,
   "created_at" TIMESTAMPTZ NOT NULL DEFAULT 'NOW()'
 );
 
@@ -114,6 +120,7 @@ CREATE TABLE IF NOT EXISTS "students" (
   "total_sum" NUMERIC DEFAULT 0.0,
   "branch_id" UUID UNIQUE REFERENCES "branches" ("id"),
   "group_id" UUID UNIQUE REFERENCES "groups" ("id"),
+  "is_active" BIGINT DEFAULT 0,
   "created_at" TIMESTAMPTZ NOT NULL DEFAULT 'NOW()'
 );
 
@@ -125,6 +132,7 @@ CREATE TABLE IF NOT EXISTS "events" (
   "start_time" TIMESTAMPTZ NOT NULL,
   "duration_hours" INT DEFAULT 1,
   "branch_id" UUID UNIQUE REFERENCES "branches" ("id"),
+  "is_active" BIGINT DEFAULT 0,
   "created_at" TIMESTAMPTZ NOT NULL DEFAULT 'NOW()'
 );
 
@@ -132,6 +140,7 @@ CREATE TABLE IF NOT EXISTS "join_events" (
   "id" UUID PRIMARY KEY,
   "event_id" UUID REFERENCES "events" ("id"),
   "student_id" UUID REFERENCES "students" ("id"),
+  "is_active" BIGINT DEFAULT 0,
   "joined_at" TIMESTAMPTZ NOT NULL DEFAULT 'NOW()'
 );
 
