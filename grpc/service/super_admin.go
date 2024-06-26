@@ -24,7 +24,7 @@ func (s *SuperAdminService) Delete(ctx context.Context, req *sa.SuperAdminPrimar
 	resp, err := s.strg.SuperAdmin().Delete(ctx, req)
 
 	if err != nil {
-		s.log.Error("Delete Super Admin:", logger.Any("req", req))
+		s.log.Error("Delete Super Admin:", logger.Error(err))
 		return nil, err
 	}
 	return resp, nil
@@ -36,7 +36,7 @@ func (s *SuperAdminService) GetAll(ctx context.Context, req *sa.GetListSuperAdmi
 	resp, err := s.strg.SuperAdmin().GetAll(ctx, req)
 
 	if err != nil {
-		s.log.Error("Get all super admin:", logger.Any("req:", req))
+		s.log.Error("Get all super admin:", logger.Error(err))
 		return nil, err
 	}
 	return resp, nil
@@ -48,7 +48,7 @@ func (s *SuperAdminService) GetById(ctx context.Context, req *sa.SuperAdminPrima
 	resp, err := s.strg.SuperAdmin().GetById(ctx, req)
 
 	if err != nil {
-		s.log.Error("Get by id admin:", logger.Any("req:", req))
+		s.log.Error("Get by id admin:", logger.Error(err))
 		return nil, err
 	}
 	return resp, nil
@@ -60,7 +60,7 @@ func (s *SuperAdminService) Update(ctx context.Context, req *sa.UpdateSuperAdmin
 	resp, err := s.strg.SuperAdmin().Update(ctx, req)
 
 	if err != nil {
-		s.log.Error("Update super admin:", logger.Any("req:", req))
+		s.log.Error("Update super admin:", logger.Error(err))
 		return nil, err
 	}
 	return resp, nil

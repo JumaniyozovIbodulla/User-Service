@@ -18,7 +18,7 @@ CREATE TYPE "attend_type" AS ENUM (
 
 CREATE TABLE IF NOT EXISTS "super_admins" (
   "id" UUID PRIMARY KEY,
-  "extra_id" VARCHAR NOT NULL,
+  "extra_id" VARCHAR UNIQUE NOT NULL,
   "fullname" VARCHAR(255) NOT NULL,
   "phone" VARCHAR(20) NOT NULL,
   "password" VARCHAR NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS "branches" (
 
 CREATE TABLE IF NOT EXISTS "groups" (
   "id" UUID PRIMARY KEY,
-  "extra_id" VARCHAR NOT NULL,
+  "extra_id" VARCHAR UNIQUE NOT NULL,
   "name" VARCHAR(255) DEFAULT '',
   "level" course_types,
   "months" INT DEFAULT 3,
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS "groups" (
 
 CREATE TABLE IF NOT EXISTS "managers" (
   "id" UUID PRIMARY KEY,
-  "extra_id" VARCHAR NOT NULL,
+  "extra_id" VARCHAR UNIQUE NOT NULL,
   "fullname" VARCHAR NOT NULL,
   "phone" VARCHAR(20) NOT NULL,
   "password" VARCHAR NOT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS "managers" (
 
 CREATE TABLE IF NOT EXISTS "administrators" (
   "id" UUID PRIMARY KEY,
-  "extra_id" VARCHAR NOT NULL,
+  "extra_id" VARCHAR UNIQUE NOT NULL,
   "fullname" VARCHAR(255) NOT NULL,
   "phone" VARCHAR(20) NOT NULL,
   "password" VARCHAR NOT NULL,
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS "administrators" (
 
 CREATE TABLE IF NOT EXISTS "support_teachers" (
   "id" UUID PRIMARY KEY,
-  "extra_id" VARCHAR NOT NULL,
+  "extra_id" VARCHAR UNIQUE NOT NULL,
   "fullname" VARCHAR(255) NOT NULL,
   "phone" VARCHAR(20) NOT NULL,
   "password" VARCHAR NOT NULL,
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS "support_teachers" (
 
 CREATE TABLE IF NOT EXISTS "teachers" (
   "id" UUID PRIMARY KEY,
-  "extra_id" VARCHAR NOT NULL,
+  "extra_id" VARCHAR UNIQUE NOT NULL,
   "fullname" VARCHAR(255) NOT NULL,
   "phone" VARCHAR(20) NOT NULL,
   "password" VARCHAR NOT NULL,
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS "teachers" (
 
 CREATE TABLE IF NOT EXISTS "students" (
   "id" UUID PRIMARY KEY,
-  "extra_id" VARCHAR NOT NULL,
+  "extra_id" VARCHAR UNIQUE NOT NULL,
   "fullname" VARCHAR(255) NOT NULL,
   "phone" VARCHAR(20) NOT NULL,
   "password" VARCHAR NOT NULL,
