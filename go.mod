@@ -3,6 +3,7 @@ module user
 go 1.22.2
 
 require (
+	github.com/google/uuid v1.6.0
 	github.com/jackc/pgx/v4 v4.18.3
 	github.com/joho/godotenv v1.5.1
 	github.com/saidamir98/udevs_pkg v0.0.0-20230619074042-397de4e67eeb

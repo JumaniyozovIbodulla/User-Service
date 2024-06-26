@@ -65,22 +65,71 @@ func (l *Store) Log(ctx context.Context, level pgx.LogLevel, msg string, data ma
 }
 
 func (s *Store) SuperAdmin() storage.SuperAdminRepo {
-	if s.order == nil {
-		s.order = NewOrderRepo(s.db)
+	if s.superAdmin == nil {
+		s.superAdmin = NewSuperAdminRepo(s.db)
 	}
-	return s.order
+	return s.superAdmin
 }
 
-// func (s *Store) OrderProduct() storage.OrderProductsRepo {
-// 	if s.orderProduct == nil {
-// 		s.orderProduct = NewOrderProductsRepo(s.db)
-// 	}
-// 	return s.orderProduct
-// }
+func (s *Store) Branch() storage.BranchRepo {
+	if s.branch == nil {
+		s.branch = NewBranchRepo(s.db)
+	}
+	return s.branch
+}
 
-// func (s *Store) OrderNotes() storage.OrderNotesRepo {
-// 	if s.orderNotes == nil {
-// 		s.orderNotes = NewOrderNotesRepo(s.db)
-// 	}
-// 	return s.orderNotes
-// }
+func (s *Store) Groups() storage.GroupRepo {
+	if s.group == nil {
+		s.group = NewGroupRepo(s.db)
+	}
+	return s.group
+}
+
+func (s *Store) Manager() storage.ManagerRepo {
+	if s.manager == nil {
+		s.manager = NewManagerRepo(s.db)
+	}
+	return s.manager
+}
+
+func (s *Store) Admins() storage.AdminRepo {
+	if s.admins == nil {
+		s.admins = NewAdminRepo(s.db)
+	}
+	return s.admins
+}
+
+func (s *Store) SupportTeacher() storage.SupportTeacherRepo {
+	if s.supportTeacher == nil {
+		s.supportTeacher = NewSupportTeacher(s.db)
+	}
+	return s.supportTeacher
+}
+
+func (s *Store) Teacher() storage.TeacherRepo {
+	if s.teacher == nil {
+		s.teacher = NewTeacherRepo(s.db)
+	}
+	return s.teacher
+}
+
+func (s *Store) Student() storage.StudentRepo {
+	if s.student == nil {
+		s.student = NewStudentRepo(s.db)
+	}
+	return s.student
+}
+
+func (s *Store) Event() storage.EventRepo {
+	if s.event == nil {
+		s.event = NewEventRepo(s.db)
+	}
+	return s.event
+}
+
+func (s *Store) EventJoin() storage.EventJoinRepo {
+	if s.eventJoin == nil {
+		s.eventJoin = NewEventJoinRepo(s.db)
+	}
+	return s.eventJoin
+}

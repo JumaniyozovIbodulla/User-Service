@@ -56,7 +56,7 @@ type ManagerRepo interface {
 	Create(ctx context.Context, req *mn.CreateManager) (*mn.Manager, error)
 	GetById(ctx context.Context, req *mn.ManagerPrimaryKey) (*mn.Manager, error)
 	GetAll(ctx context.Context, req *mn.GetListManagersRequest) (*mn.GetListManagersResponse, error)
-	Update(ctx context.Context, req *gr.UpdateGroup) (*gr.Group, error)
+	Update(ctx context.Context, req *mn.UpdateManager) (*mn.Manager, error)
 	Delete(ctx context.Context, req *mn.ManagerPrimaryKey) (*mn.Empty, error)
 }
 
