@@ -103,4 +103,5 @@ type EventRepo interface {
 type EventJoinRepo interface {
 	Create(ctx context.Context, req *ej.CreateJoinEvent) (*ej.JoinEvent, error)
 	GetById(ctx context.Context, req *ej.JoinEventPrimaryKey) (*ej.JoinEvent, error)
+	Delete(ctx context.Context, req *ej.JoinEventPrimaryKey) (*ej.Empty, error)
 }

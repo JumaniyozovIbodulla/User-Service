@@ -8,6 +8,5 @@ DROP TABLE IF EXISTS "managers";
 DROP TABLE IF EXISTS "groups";
 DROP TABLE IF EXISTS "branches";
 DROP TABLE IF EXISTS "super_admin";
-DROP TYPE IF EXISTS "attend_type";
 DROP TYPE IF EXISTS "course_types";
 DROP EXTENSION IF EXISTS postgis;

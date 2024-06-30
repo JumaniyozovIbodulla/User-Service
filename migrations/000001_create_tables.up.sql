@@ -10,12 +10,6 @@ CREATE TYPE "course_types" AS ENUM (
   'ielts_level_two'
 );
 
-CREATE TYPE "attend_type" AS ENUM (
-  'attended',
-  'absent',
-  'late'
-);
-
 CREATE TABLE IF NOT EXISTS "super_admins" (
   "id" UUID PRIMARY KEY,
   "extra_id" VARCHAR UNIQUE NOT NULL,
