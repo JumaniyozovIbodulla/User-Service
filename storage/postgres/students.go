@@ -79,6 +79,7 @@ func (s *studentRepo) GetById(ctx context.Context, req *st.StudentPrimaryKey) (*
 		fullname, 
 		phone, 
 		password,
+		scores,
 		paid_sum,
 		course_count,
 		total_sum, 
@@ -97,6 +98,7 @@ func (s *studentRepo) GetById(ctx context.Context, req *st.StudentPrimaryKey) (*
 		&resp.FullName,
 		&resp.Phone,
 		&resp.Password,
+		&resp.Scores,
 		&resp.PaidSum,
 		&resp.CourseCount,
 		&resp.TotalSum,
@@ -121,6 +123,7 @@ func (s *studentRepo) GetAll(ctx context.Context, req *st.GetListStudentsRequest
 		fullname, 
 		phone, 
 		password,
+		scores,
 		paid_sum,
 		course_count,
 		total_sum, 
@@ -150,6 +153,7 @@ func (s *studentRepo) GetAll(ctx context.Context, req *st.GetListStudentsRequest
 			&student.FullName,
 			&student.Phone,
 			&student.Password,
+			&student.Scores,
 			&student.PaidSum,
 			&student.CourseCount,
 			&student.TotalSum,
@@ -180,13 +184,14 @@ func (s *studentRepo) Update(ctx context.Context, req *st.UpdateStudent) (*st.St
 		fullname = $2, 
 		phone = $3, 
 		password = $4, 
-		paid_sum = $5,
-		course_count = $6,
-		total_sum = $7, 
-		branch_id = $8,
-		group_id = $9
+		scores = = $5,
+		paid_sum = $6,
+		course_count = $7,
+		total_sum = $8, 
+		branch_id = $9,
+		group_id = $10
 	WHERE
-		id = $1;`, req.Id, req.FullName, req.Phone, req.Password, req.PaidSum, req.CourseCount, req.TotalSum, req.BranchId, req.GroupId)
+		id = $1;`, req.Id, req.FullName, req.Phone, req.Password, req.Scores, req.PaidSum, req.CourseCount, req.TotalSum, req.BranchId, req.GroupId)
 
 	if err != nil {
 		return nil, err
@@ -212,3 +217,5 @@ func (s *studentRepo) Delete(ctx context.Context, req *st.StudentPrimaryKey) (*s
 	}
 	return nil, nil
 }
+
+

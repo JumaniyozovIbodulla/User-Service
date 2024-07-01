@@ -113,8 +113,8 @@ CREATE TABLE IF NOT EXISTS "students" (
   "paid_sum" NUMERIC(10,2) DEFAULT 0,
   "course_count" INT DEFAULT 1,
   "total_sum" NUMERIC DEFAULT 0.0,
-  "branch_id" UUID UNIQUE REFERENCES "branches" ("id"),
-  "group_id" UUID UNIQUE REFERENCES "groups" ("id"),
+  "branch_id" UUID REFERENCES "branches" ("id"),
+  "group_id" UUID REFERENCES "groups" ("id"),
   "is_active" BIGINT DEFAULT 0,
   "created_at" TIMESTAMPTZ NOT NULL DEFAULT 'NOW()'
 );

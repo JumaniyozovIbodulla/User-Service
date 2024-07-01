@@ -79,7 +79,7 @@ func (g *groupRepo) Create(ctx context.Context, req *gr.CreateGroup) (*gr.Group,
 		_, err = g.db.Exec(ctx, `
 			INSERT INTO 
 				groups(id, extra_id, name, level, months, number_of_students, branch_id)
-			VALUES($1, $2, $3, $4, $5, $6, $7);`, id, "SA00001", req.Name, level, req.Months, req.NumberOfStudents, req.BranchId)
+			VALUES($1, $2, $3, $4, $5, $6, $7);`, id, "G00001", req.Name, level, req.Months, req.NumberOfStudents, req.BranchId)
 		if err != nil {
 			return nil, err
 		}
@@ -94,7 +94,7 @@ func (g *groupRepo) Create(ctx context.Context, req *gr.CreateGroup) (*gr.Group,
 		stringNumber := strconv.Itoa(number)
 		length := 5 - len(stringNumber)
 		zeros := strings.Repeat("0", length)
-		result := fmt.Sprintf("SA%s%d", zeros, number)
+		result := fmt.Sprintf("G%s%d", zeros, number)
 		_, err = g.db.Exec(ctx, `
 			INSERT INTO 
 				groups(id, extra_id, name, level, months, number_of_students, branch_id)
