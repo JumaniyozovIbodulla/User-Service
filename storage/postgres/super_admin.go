@@ -27,8 +27,7 @@ func (s *superAdminRepo) Create(ctx context.Context, req *sp.CreateSuperAdmin) (
 
 	var externalId string
 
-	row := s.db.QueryRow(ctx, `SELECT extra_id FROM super_admins ORDER BY created_at DESC LIMIT 1;`)
-
+	row := s.db.QueryRow(ctx, `SELECT extra_id FROM super_admins ORDER BY extra_id DESC LIMIT 1;`)
 	err := row.Scan(&externalId)
 	if err != nil {
 		_, err = s.db.Exec(ctx, `
@@ -84,7 +83,7 @@ func (s *superAdminRepo) GetAll(ctx context.Context, req *sp.GetListSuperAdminRe
 	if req.Search != "" {
 		filter = ` AND fullname ILIKE '%` + req.Search + `%' `
 	}
-	
+
 	rows, err := s.db.Query(ctx, `
 	SELECT 
 		id,
@@ -99,7 +98,7 @@ func (s *superAdminRepo) GetAll(ctx context.Context, req *sp.GetListSuperAdminRe
 	FROM
 		super_admins
 	WHERE
-		TRUE ` + filter + `
+		TRUE `+filter+`
 	OFFSET
 		$1
 	LIMIT
@@ -127,13 +126,13 @@ func (s *superAdminRepo) GetAll(ctx context.Context, req *sp.GetListSuperAdminRe
 		if err != nil {
 			return nil, err
 		}
-	
+
 		resp.SuperAdmins = append(resp.SuperAdmins, &superAdmin)
 	}
 	defer rows.Close()
 
 	err = s.db.QueryRow(ctx, `SELECT COUNT(*) FROM super_admins WHERE TRUE `+filter+`;`).Scan(&resp.Count)
-	
+
 	if err != nil {
 		return nil, err
 	}

@@ -28,7 +28,7 @@ func (s *studentRepo) Create(ctx context.Context, req *st.CreateStudent) (*st.St
 
 	var externalId string
 
-	row := s.db.QueryRow(ctx, `SELECT extra_id FROM students ORDER BY created_at DESC LIMIT 1;`)
+	row := s.db.QueryRow(ctx, `SELECT extra_id FROM students ORDER BY extra_id DESC LIMIT 1;`)
 
 	err := row.Scan(&externalId)
 	if err != nil {

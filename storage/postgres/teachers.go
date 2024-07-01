@@ -28,7 +28,7 @@ func (t *teacherRepo) Create(ctx context.Context, req *tr.CreateTeacher) (*tr.Te
 
 	var externalId string
 
-	row := t.db.QueryRow(ctx, `SELECT extra_id FROM teachers ORDER BY created_at DESC LIMIT 1;`)
+	row := t.db.QueryRow(ctx, `SELECT extra_id FROM teachers ORDER BY extra_id DESC LIMIT 1;`)
 
 	err := row.Scan(&externalId)
 	if err != nil {

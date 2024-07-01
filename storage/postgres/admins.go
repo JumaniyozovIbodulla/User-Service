@@ -28,7 +28,7 @@ func (a *adminRepo) Create(ctx context.Context, req *ad.CreateAdminstrator) (*ad
 
 	var externalId string
 
-	row := a.db.QueryRow(ctx, `SELECT extra_id FROM administrators ORDER BY created_at DESC LIMIT 1;`)
+	row := a.db.QueryRow(ctx, `SELECT extra_id FROM administrators ORDER BY extra_id DESC LIMIT 1;`)
 
 	err := row.Scan(&externalId)
 	if err != nil {

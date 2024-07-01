@@ -72,7 +72,7 @@ func (g *groupRepo) Create(ctx context.Context, req *gr.CreateGroup) (*gr.Group,
 
 	var externalId string
 
-	row := g.db.QueryRow(ctx, `SELECT extra_id FROM groups ORDER BY created_at DESC LIMIT 1;`)
+	row := g.db.QueryRow(ctx, `SELECT extra_id FROM groups ORDER BY extra_id DESC LIMIT 1;`)
 
 	err := row.Scan(&externalId)
 	if err != nil {

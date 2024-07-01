@@ -28,7 +28,7 @@ func (m *managerRepo) Create(ctx context.Context, req *mn.CreateManager) (*mn.Ma
 
 	var externalId string
 
-	row := m.db.QueryRow(ctx, `SELECT extra_id FROM managers ORDER BY created_at DESC LIMIT 1;`)
+	row := m.db.QueryRow(ctx, `SELECT extra_id FROM managers ORDER BY extra_id DESC LIMIT 1;`)
 
 	err := row.Scan(&externalId)
 	if err != nil {
