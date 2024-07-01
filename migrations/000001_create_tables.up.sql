@@ -123,7 +123,7 @@ CREATE TABLE IF NOT EXISTS "events" (
   "id" UUID PRIMARY KEY,
   "topic" VARCHAR(255) NOT NULL,
   "descrioption" TEXT DEFAULT '',
-  "day" VARCHAR(10) NOT NULL CHECK ("day" = 'sunday'),
+  "day" VARCHAR(10) NOT NULL,
   "start_time" TIMESTAMPTZ NOT NULL,
   "duration_hours" INT DEFAULT 1,
   "branch_id" UUID UNIQUE REFERENCES "branches" ("id"),
