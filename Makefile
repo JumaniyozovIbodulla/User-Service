@@ -21,6 +21,14 @@ gen-proto:
 	mkdir -p ${CURRENT_DIR}/genproto/user_service/events
 	sudo rm -rf ${CURRENT_DIR}/genproto/user_service/join_events
 	mkdir -p ${CURRENT_DIR}/genproto/user_service/join_events
+	sudo rm -rf ${CURRENT_DIR}/genproto/schedule_service/schedules
+	mkdir -p ${CURRENT_DIR}/genproto/schedule_service/schedules
+	sudo rm -rf ${CURRENT_DIR}/genproto/schedule_service/lessons
+	mkdir -p ${CURRENT_DIR}/genproto/schedule_service/lessons
+	sudo rm -rf ${CURRENT_DIR}/genproto/schedule_service/tasks
+	mkdir -p ${CURRENT_DIR}/genproto/schedule_service/tasks
+	sudo rm -rf ${CURRENT_DIR}/genproto/schedule_service/attendances
+	mkdir -p ${CURRENT_DIR}/genproto/schedule_service/attendances
 	protoc --proto_path=protos/user_protos --go_out=${CURRENT_DIR}/genproto/user_service/super_admins --go_opt=paths=source_relative --go-grpc_out=${CURRENT_DIR}/genproto/user_service/super_admins --go-grpc_opt=paths=source_relative protos/user_protos/super_admins.proto
 	protoc --proto_path=protos/user_protos --go_out=${CURRENT_DIR}/genproto/user_service/branches --go_opt=paths=source_relative --go-grpc_out=${CURRENT_DIR}/genproto/user_service/branches --go-grpc_opt=paths=source_relative protos/user_protos/branches.proto
 	protoc --proto_path=protos/user_protos --go_out=${CURRENT_DIR}/genproto/user_service/groups --go_opt=paths=source_relative --go-grpc_out=${CURRENT_DIR}/genproto/user_service/groups --go-grpc_opt=paths=source_relative protos/user_protos/groups.proto
@@ -31,6 +39,10 @@ gen-proto:
 	protoc --proto_path=protos/user_protos --go_out=${CURRENT_DIR}/genproto/user_service/students --go_opt=paths=source_relative --go-grpc_out=${CURRENT_DIR}/genproto/user_service/students --go-grpc_opt=paths=source_relative protos/user_protos/students.proto
 	protoc --proto_path=protos/user_protos --go_out=${CURRENT_DIR}/genproto/user_service/events --go_opt=paths=source_relative --go-grpc_out=${CURRENT_DIR}/genproto/user_service/events --go-grpc_opt=paths=source_relative protos/user_protos/events.proto
 	protoc --proto_path=protos/user_protos --go_out=${CURRENT_DIR}/genproto/user_service/join_events --go_opt=paths=source_relative --go-grpc_out=${CURRENT_DIR}/genproto/user_service/join_events --go-grpc_opt=paths=source_relative protos/user_protos/join_events.proto
+	protoc --proto_path=protos/schedule_protos --go_out=${CURRENT_DIR}/genproto/schedule_service/schedules --go_opt=paths=source_relative --go-grpc_out=${CURRENT_DIR}/genproto/schedule_service/schedules --go-grpc_opt=paths=source_relative protos/schedule_protos/schedules.proto
+	protoc --proto_path=protos/schedule_protos --go_out=${CURRENT_DIR}/genproto/schedule_service/lessons --go_opt=paths=source_relative --go-grpc_out=${CURRENT_DIR}/genproto/schedule_service/lessons --go-grpc_opt=paths=source_relative protos/schedule_protos/lessons.proto
+	protoc --proto_path=protos/schedule_protos --go_out=${CURRENT_DIR}/genproto/schedule_service/tasks --go_opt=paths=source_relative --go-grpc_out=${CURRENT_DIR}/genproto/schedule_service/tasks --go-grpc_opt=paths=source_relative protos/schedule_protos/tasks.proto
+	protoc --proto_path=protos/schedule_protos --go_out=${CURRENT_DIR}/genproto/schedule_service/attendances --go_opt=paths=source_relative --go-grpc_out=${CURRENT_DIR}/genproto/schedule_service/attendances --go-grpc_opt=paths=source_relative protos/schedule_protos/attendances.proto
 
 run:
 	go run cmd/main.go
