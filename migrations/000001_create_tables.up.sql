@@ -109,6 +109,7 @@ CREATE TABLE IF NOT EXISTS "students" (
   "fullname" VARCHAR(255) NOT NULL,
   "phone" VARCHAR(20) NOT NULL,
   "password" VARCHAR NOT NULL,
+  "scores" NUMERIC(3,1) DEFAULT 0,
   "paid_sum" NUMERIC(10,2) DEFAULT 0,
   "course_count" INT DEFAULT 1,
   "total_sum" NUMERIC DEFAULT 0.0,
